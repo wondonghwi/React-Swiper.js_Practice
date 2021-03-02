@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import {Swiper, SwiperSlide} from "swiper/react";
+import SwiperCore, {
+  Autoplay,
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y
+} from "swiper";
+
+//style
+import "swiper/swiper.scss";
+import "swiper/components/navigation/navigation.scss";
+import "swiper/components/pagination/pagination.scss";
+import "swiper/components/scrollbar/scrollbar.scss";
+
+SwiperCore.use([Autoplay, Navigation, Pagination, Scrollbar, A11y]);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Swiper
+      className='swiper-container'
+      spaceBetween={30}
+      slidesPerView={3}
+      loop={true}
+      autoplay={{
+        delay: 3000,
+      }}
+      navigation
+      pagination={{clickable: true}}
+      scrollbar={{draggable: true}}
+      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => console.log("slide change")}
+    >
+      <SwiperSlide> slide1 </SwiperSlide>
+      <SwiperSlide> slide2 </SwiperSlide>
+      <SwiperSlide> slide3 </SwiperSlide>
+      <SwiperSlide> slide4 </SwiperSlide>
+      <SwiperSlide> slide5 </SwiperSlide>
+      <SwiperSlide> slide6 </SwiperSlide>
+      <SwiperSlide> slide7 </SwiperSlide>
+    </Swiper>
   );
 }
 
